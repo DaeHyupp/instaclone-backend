@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "nodemon --exec babel-node server"
+    "dev": "nodemon --exec babel-node server",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
   },
   "repository": {
     "type": "git",
@@ -24,8 +26,14 @@
     "prisma": "^2.29.0"
   },
   "dependencies": {
+    "@graphql-tools/load-files": "^6.3.2",
+    "@graphql-tools/merge": "^7.0.0",
+    "@graphql-tools/schema": "^8.0.3",
+    "@prisma/client": "^2.29.0",
     "apollo-server": "^3.1.2",
-    "graphql": "^15.5.1"
-  },
-  "type": "module"
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.1",
+    "graphql-tools": "^8.1.0",
+    "upgrade": "^1.1.0"
+  }
 }
