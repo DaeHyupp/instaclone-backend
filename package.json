@@ -31,9 +31,11 @@
     "@graphql-tools/schema": "^8.0.3",
     "@prisma/client": "^2.29.0",
     "apollo-server": "^3.1.2",
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "graphql": "^15.5.1",
     "graphql-tools": "^8.1.0",
+    "jsonwebtoken": "^8.5.1",
     "upgrade": "^1.1.0"
   }
 }
