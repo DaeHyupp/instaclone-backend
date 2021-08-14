@@ -35,7 +35,11 @@
     "dotenv": "^10.0.0",
     "graphql": "^15.5.1",
     "graphql-tools": "^8.1.0",
+    "graphql-upload": "^12.0.0",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "regenerator-runtime": "^0.13.9",
+    "stream": "0.0.2",
     "upgrade": "^1.1.0"
   }
 }
