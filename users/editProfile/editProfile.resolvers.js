@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import client from "../../client";
 import { protectedResolver } from "../users.utils";
+import { uploadToS3 } from "../../shared/shared.utils";
 
 export default {
   Mutation: {
@@ -22,7 +23,8 @@ export default {
       ) => {
         let avatarUrl = null;
         if (avatar) {
-          const { filename, createReadStream } = await avatar;
+          avatarUrl = await uploadToS3(avatar, loggedInUser.id, "avatars");
+          /*const { filename, createReadStream } = await avatar;
           const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
           const readStream = createReadStream();
           const writeStream = createWriteStream(
@@ -31,6 +33,8 @@ export default {
           readStream.pipe(writeStream);
           avatarUrl = `http://localhost:4000/static/${newFilename}`;
           console.log(avatarUrl);
+          */
+          //saving in server not db
         }
         let uglyPassword = null;
         if (newPassword) {
