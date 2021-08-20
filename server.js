@@ -23,6 +23,8 @@ const startServer = async () => {
         return {
           loggedInUser: await getUser(ctx.req.headers.token),
         };
+      } else {
+        console.log("Something goes wrong with server.js");
       }
     },
   });
@@ -40,7 +42,6 @@ const startServer = async () => {
       execute,
       subscribe,
       async onConnect({ token }) {
-        console.log(token);
         if (!token) {
           throw new Error("You cant listen");
         }
