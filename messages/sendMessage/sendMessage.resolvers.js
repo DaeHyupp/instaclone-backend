@@ -51,9 +51,11 @@ export default {
             },
           },
         });
+        console.log(message);
         pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...message } });
         return {
           ok: true,
+          id: message.id,
         };
       }
     ),

@@ -20,7 +20,7 @@ export default {
         // hash password
         const uglyPassword = await bycrypt.hash(password, 10);
         // save and return the user
-        return client.user.create({
+        const created = await client.user.create({
           data: {
             userName,
             email,
@@ -29,6 +29,7 @@ export default {
             password: uglyPassword,
           },
         });
+        return { ok: true };
       } catch (e) {
         return e;
       }

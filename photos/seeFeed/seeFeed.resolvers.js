@@ -3,17 +3,32 @@ import { protectedResolver } from "../../users/users.utils";
 
 export default {
   Query: {
-    seeFeed: protectedResolver(async (_, __, { loggedInUser }) => {
-      const see = await client.photo.findMany({
+    seeFeed: protectedResolver(async (_, { offset }, { loggedInUser }) => {
+      const check = await client.photo.findMany({
         where: {
           OR: [
-            { user: { followers: { some: { id: loggedInUser.id } } } },
-            { userId: loggedInUser.id },
+            {
+              user: {
+                followers: {
+                  some: {
+                    id: loggedInUser.id,
+                  },
+                },
+              },
+            },
+            {
+              user: { id: loggedInUser.id },
+            },
           ],
         },
-        orderBy: { createdAt: "desc" },
+        orderBy: {
+          createdAt: "desc",
+        },
+        skip: offset,
+        take: 2,
       });
-      return see;
+      console.log(check);
+      return check;
     }),
   },
 };
